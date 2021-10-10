@@ -1,3 +1,15 @@
+<script>
+import Header from "@/components/Header.vue";
+
+export default {
+	components: {
+		Header,
+	},
+};
+</script>
+
 <template>
-	<div>Hello, World</div>
+	<div>
+		<Header></Header>
+	</div>
 </template>
