@@ -47,7 +47,7 @@ export default {
 <template>
 	<div>
 		<Header></Header>
-		<section class="forum">
+		<div class="forum">
 			<div class="post" v-for="(value, index) in forum" :key="index">
 				<div class="header-post">
 					<div class="title" :title="value.title">
@@ -67,6 +67,6 @@ export default {
 					Supprimer le thread
 				</div>
 			</div>
-		</section>
+		</div>
 	</div>
 </template>
