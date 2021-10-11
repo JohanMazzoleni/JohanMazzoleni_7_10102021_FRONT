@@ -42,13 +42,9 @@ export default {
 				<div class="message">
 					{{ value.message }}
 				</div>
-				<div class="more">
-					<router-link
-						:to="{ name: 'Thread', params: { id: value.id } }"
-					>
-						Cliquer ici pour la voir la suite
-					</router-link>
-				</div>
+				<router-link :to="{ name: 'Thread', params: { id: value.id } }"
+					><div class="more">Cliquer ici pour la voir la suite</div>
+				</router-link>
 			</div>
 		</section>
 	</div>
