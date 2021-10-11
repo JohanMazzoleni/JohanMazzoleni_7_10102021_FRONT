@@ -27,7 +27,9 @@ export default {
 				<router-link :to="{ name: 'Home' }">Accueil</router-link>
 			</ul>
 			<ul>
-				Créer un message
+				<router-link :to="{ name: 'createThread' }">
+					Créer un message
+				</router-link>
 			</ul>
 			<ul v-on:click="logout">
 				Déconnexion
