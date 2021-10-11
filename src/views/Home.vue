@@ -14,7 +14,7 @@ export default {
 		var ctx = this;
 		document.title = "Groupomania | Accueil";
 		ctx.axios
-			.get(ctx.$endPoint + "/forum/", {
+			.get(ctx.$endPoint + "/thread/", {
 				headers: {
 					authorization: "Bearer: " + localStorage.getItem("token"),
 				},

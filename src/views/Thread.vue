@@ -15,7 +15,7 @@ export default {
 
 			ctx.axios
 				.post(
-					ctx.$endPoint + "/forum/reply/" + ctx.id,
+					ctx.$endPoint + "/thread/reply/" + ctx.id,
 					{
 						message: ctx.reply_text,
 					},
@@ -27,13 +27,14 @@ export default {
 					}
 				)
 				.then(function () {
+					ctx.reply_text = null;
 					ctx.loadThread();
 				});
 		},
 		loadThread() {
 			var ctx = this;
 			ctx.axios
-				.get(ctx.$endPoint + "/forum/" + ctx.id, {
+				.get(ctx.$endPoint + "/thread/" + ctx.id, {
 					headers: {
 						authorization:
 							"Bearer: " + localStorage.getItem("token"),
@@ -42,6 +43,8 @@ export default {
 				.then(function (res) {
 					ctx.reply_post = res.data.message;
 					ctx.thread = res.data.thread;
+
+					document.title = "Groupomania | " + ctx.thread.title;
 
 					for (
 						let index = 0;
@@ -72,7 +75,12 @@ export default {
 	},
 	mounted() {
 		var ctx = this;
-		TimeAgo.addDefaultLocale(fr);
+
+		/* eslint no-empty: 0 */
+		try {
+			TimeAgo.addDefaultLocale(fr);
+		} catch {}
+
 		ctx.loadThread();
 		ctx.threadTiming = setInterval(ctx.loadThread, 1000 * 5);
 	},
@@ -99,7 +107,12 @@ export default {
 						}}</span>
 					</div>
 				</div>
-				<div class="message">{{ thread.message }}</div>
+				<div class="message" v-if="thread.message != null">
+					<div>{{ thread.message }}</div>
+					<div class="image">
+						<img :src="'http://localhost:3000/uploads/' + thread.attachment">
+					</div>
+				</div>
 				<div class="reply">
 					<form @submit="reply">
 						<label for="reply-text">Répondre au thread</label>
