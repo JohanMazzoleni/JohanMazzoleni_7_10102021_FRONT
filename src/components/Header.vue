@@ -1,3 +1,18 @@
+<script>
+export default {
+	methods: {
+		logout()
+		{
+			var ctx = this;
+			localStorage.removeItem("token");
+			ctx.$router.push({
+				name: "Login"
+			});
+		}
+	},
+}
+</script>
+
 <template>
 	<section class="header">
 		<div class="logo">
@@ -12,6 +27,9 @@
 			</ul>
 			<ul>
 				Forum
+			</ul>
+			<ul v-on:click="logout">
+				Déconnexion
 			</ul>
 		</nav>
 	</section>

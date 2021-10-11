@@ -5,6 +5,10 @@ export default {
 	components: {
 		Header,
 	},
+	mounted()
+	{
+		document.title = "Groupomania | Accueil";
+	}
 };
 </script>
 
