@@ -6,7 +6,7 @@ const routes = [
 		path: '/',
 		name: 'Home',
 		component: () => import('../views/Home.vue'),
-		meta : {
+		meta: {
 			auth: 1
 		}
 	},
@@ -24,7 +24,15 @@ const routes = [
 		path: '/thread/:id',
 		name: 'Thread',
 		component: () => import('../views/Thread.vue'),
-		meta : {
+		meta: {
+			auth: 1
+		}
+	},
+	{
+		path: '/thread/create',
+		name: 'createThread',
+		component: () => import('../views/createThread.vue'),
+		meta: {
 			auth: 1
 		}
 	},
@@ -39,9 +47,8 @@ router.beforeEach((to, from, next) => {
 	// var ctx = this;
 	if (to.meta.auth) {
 		const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
-		if (!token)
-		{
-			next({name: "Login"});
+		if (!token) {
+			next({ name: "Login" });
 		}
 		else {
 			next();
