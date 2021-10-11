@@ -30,7 +30,7 @@ export default {
 			</router-link>
 			<router-link :to="{ name: 'createThread' }">
 				<ul>
-					Créer un message
+					Créer un thread
 				</ul>
 			</router-link>
 			<router-link :to="{ name: 'Settings' }">
