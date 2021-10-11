@@ -87,8 +87,19 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     margin: 50px;
-
     margin-top: 20px;
+
+    @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include desktop {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
     .post {
         width: 100%;
@@ -135,6 +146,11 @@ body {
     justify-content: center;
     .thread-container {
         width: 50%;
+
+        @include mobile {
+            width: 80%;
+        }
+
         .thread-post {
             margin-top: 20px;
             border: 1px solid black;
@@ -196,12 +212,18 @@ body {
 }
 
 .createThread {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     .thread-form {
-        width: 300px;
+        width: 500px;
         border: 1px solid black;
         padding: 10px;
+
+        @include mobile {
+            width: 80%;
+        }
+
         .col-2 {
             margin-top: 10px;
             display: flex;
@@ -212,4 +234,8 @@ body {
             margin-bottom: 5px;
         }
     }
+}
+
+.settings {
+    margin: 20px;
 }

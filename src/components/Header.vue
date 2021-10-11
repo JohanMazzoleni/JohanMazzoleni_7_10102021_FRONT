@@ -31,6 +31,11 @@ export default {
 					Créer un message
 				</router-link>
 			</ul>
+			<ul>
+				<router-link :to="{ name: 'Settings' }">
+					Paramètre
+				</router-link>
+			</ul>
 			<ul v-on:click="logout">
 				Déconnexion
 			</ul>
