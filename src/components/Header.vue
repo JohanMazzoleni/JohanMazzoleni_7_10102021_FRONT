@@ -23,19 +23,21 @@ export default {
 			</router-link>
 		</div>
 		<nav class="navigation">
-			<ul>
-				<router-link :to="{ name: 'Home' }">Accueil</router-link>
-			</ul>
-			<ul>
-				<router-link :to="{ name: 'createThread' }">
+			<router-link :to="{ name: 'Home' }">
+				<ul>
+					Accueil
+				</ul>
+			</router-link>
+			<router-link :to="{ name: 'createThread' }">
+				<ul>
 					Créer un message
-				</router-link>
-			</ul>
-			<ul>
-				<router-link :to="{ name: 'Settings' }">
+				</ul>
+			</router-link>
+			<router-link :to="{ name: 'Settings' }">
+				<ul>
 					Paramètre
-				</router-link>
-			</ul>
+				</ul>
+			</router-link>
 			<ul v-on:click="logout">
 				Déconnexion
 			</ul>
