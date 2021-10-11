@@ -1,26 +1,51 @@
 import { createRouter, createWebHistory } from 'vue-router'
+// import axios from 'axios';
 
 const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: () => import('../views/Home.vue')
+		component: () => import('../views/Home.vue'),
+		meta : {
+			auth: 1
+		}
 	},
 	{
 		path: "/register",
 		name: "Register",
-		component: () => import('../views/Auth/Register.vue')
+		component: () => import('../views/Auth/Register.vue'),
 	},
 	{
 		path: "/login",
 		name: "Login",
-		component: () => import('../views/Auth/Login.vue')
+		component: () => import('../views/Auth/Login.vue'),
+		// meta: {
+		// 	auth: 1,
+		// },
 	},
 ]
 
 const router = createRouter({
 	history: createWebHistory(process.env.BASE_URL),
 	routes
+})
+
+router.beforeEach((to, from, next) => {
+	// var ctx = this;
+	if (to.meta.auth) {
+		const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
+		if (!token)
+		{
+			next({name: "Login"});
+		}
+		else {
+			next();
+		}
+	}
+	else {
+		next();
+	}
+	// console.log(to, from);
 })
 
 export default router
