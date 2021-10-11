@@ -109,7 +109,7 @@ export default {
 				</div>
 				<div class="message" v-if="thread.message != null">
 					<div>{{ thread.message }}</div>
-					<div class="image">
+					<div class="image" v-if="thread.attachment">
 						<img :src="'http://localhost:3000/uploads/' + thread.attachment">
 					</div>
 				</div>
