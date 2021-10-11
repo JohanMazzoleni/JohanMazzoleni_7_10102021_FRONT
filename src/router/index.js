@@ -19,9 +19,14 @@ const routes = [
 		path: "/login",
 		name: "Login",
 		component: () => import('../views/Auth/Login.vue'),
-		// meta: {
-		// 	auth: 1,
-		// },
+	},
+	{
+		path: '/thread/:id',
+		name: 'Thread',
+		component: () => import('../views/Thread.vue'),
+		meta : {
+			auth: 1
+		}
 	},
 ]
 

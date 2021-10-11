@@ -1,32 +1,33 @@
 <script>
 export default {
 	methods: {
-		logout()
-		{
+		logout() {
 			var ctx = this;
 			localStorage.removeItem("token");
 			ctx.$router.push({
-				name: "Login"
+				name: "Login",
 			});
-		}
+		},
 	},
-}
+};
 </script>
 
 <template>
 	<section class="header">
 		<div class="logo">
-			<img
-				:src="require('@/assets/img/logo.png')"
-				alt="Logo Groupomania"
-			/>
+			<router-link :to="{ name: 'Home' }"
+				><img
+					:src="require('@/assets/img/logo.png')"
+					alt="Logo Groupomania"
+				/>
+			</router-link>
 		</div>
 		<nav class="navigation">
 			<ul>
-				Accueil
+				<router-link :to="{ name: 'Home' }">Accueil</router-link>
 			</ul>
 			<ul>
-				Forum
+				Créer un message
 			</ul>
 			<ul v-on:click="logout">
 				Déconnexion
