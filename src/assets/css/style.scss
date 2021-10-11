@@ -104,20 +104,27 @@ body {
     .post {
         width: 100%;
         border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         .header-post {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid black;
+
             .title {
                 padding: 10px;
+            }
+
+            .author {
+                font-style: italic;
             }
         }
 
         .message {
             padding: 10px;
-            border-bottom: 1px solid black;
         }
 
         a {
@@ -129,6 +136,12 @@ body {
             padding: 10px;
             text-align: center;
             cursor: pointer;
+            border-top: 1px solid black;
+        }
+
+        .thread-option {
+            width: 100%;
+            bottom: 0;
         }
 
         .delete {
