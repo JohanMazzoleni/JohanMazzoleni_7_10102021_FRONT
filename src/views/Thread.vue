@@ -68,6 +68,12 @@ export default {
 					}
 
 					ctx.thread.format_date = ctx.format_date(ctx.thread.date);
+				})
+				.catch(function()
+				{
+					ctx.$router.push({
+						name: "Home"
+					})
 				});
 		},
 		format_date(date) {
