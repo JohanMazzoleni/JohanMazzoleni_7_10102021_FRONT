@@ -1,7 +1,5 @@
 <script>
 import Header from "@/components/Header.vue";
-import TimeAgo from "javascript-time-ago";
-import fr from "javascript-time-ago/locale/fr.json";
 
 export default {
 	components: {
@@ -73,7 +71,7 @@ export default {
 				});
 		},
 		format_date(date) {
-			const timeAgo = new TimeAgo("fr-FR");
+			const timeAgo = new this.$TimeAgo("fr-FR");
 			return timeAgo.format(new Date(date));
 		},
 	},
@@ -90,9 +88,6 @@ export default {
 		var ctx = this;
 
 		/* eslint no-empty: 0 */
-		try {
-			TimeAgo.addDefaultLocale(fr);
-		} catch {}
 
 		ctx.loadThread();
 		ctx.threadTiming = setInterval(ctx.loadThread, 1000 * 5);
