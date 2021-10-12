@@ -37,6 +37,26 @@ export default {
 					ctx.forum = res.data;
 				});
 		},
+		slugify(str) {
+            str = str.replace(/^\s+|\s+$/g, "");
+
+            str = str.toLowerCase();
+            var from =
+                "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;";
+            var to =
+                "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------";
+            for (var i = 0, l = from.length; i < l; i++) {
+                str = str.replace(
+                    new RegExp(from.charAt(i), "g"),
+                    to.charAt(i)
+                );
+            }
+            str = str
+                .replace(/[^a-z0-9 -]/g, "")
+                .replace(/\s+/g, "-")
+                .replace(/-+/g, "-");
+            return str;
+        }
 	},
 	mounted() {
 		var ctx = this;
@@ -64,7 +84,7 @@ export default {
 				</div>
 				<div class="thread-option">
 					<router-link
-						:to="{ name: 'Thread', params: { id: value.id } }"
+						:to="{ name: 'Thread', params: { id: value.id + '-' + slugify(value.title) } }"
 						><div class="more">
 							Cliquer ici pour la voir la suite
 						</div>
