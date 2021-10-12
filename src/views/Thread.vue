@@ -86,7 +86,7 @@ export default {
 			reply_text: null,
 			reply_post: [],
 			thread: {},
-			id: this.$route.params.id,
+			id: this.$route.params.id.split("-")[0],
 			threadTiming: null,
 		};
 	},
