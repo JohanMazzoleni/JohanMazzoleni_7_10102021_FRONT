@@ -139,8 +139,31 @@ body {
             padding: 10px;
             border-bottom: 1px solid black;
 
+            @include mobile {
+                flex-direction: column;
+            }
+
+            @include tablet {
+                flex-direction: column;
+            }
+
             .title {
                 padding: 10px;
+                text-overflow: ellipsis;
+                // white-space: nowrap;
+                width: 50%;
+                overflow: hidden;
+                line-break: anywhere;
+
+                @include mobile {
+                    text-align: center;
+                    width: 100%;
+                }
+
+                @include tablet {
+                    text-align: center;
+                    width: 100%;
+                }
             }
 
             .author {
@@ -150,6 +173,7 @@ body {
 
         .message {
             padding: 10px;
+            line-break: anywhere;
         }
 
         a {
