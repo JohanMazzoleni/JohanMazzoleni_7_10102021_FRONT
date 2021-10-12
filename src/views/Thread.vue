@@ -31,6 +31,19 @@ export default {
 					ctx.loadThread();
 				});
 		},
+		deleteReply(id) {
+			var ctx = this;
+			ctx.axios
+				.delete(ctx.$endPoint + "/thread/reply/" + id, {
+					headers: {
+						authorization:
+							"Bearer: " + localStorage.getItem("token"),
+					},
+				})
+				.then(function () {
+					ctx.loadThread();
+				});
+		},
 		loadThread() {
 			var ctx = this;
 			ctx.axios
@@ -110,7 +123,12 @@ export default {
 				<div class="message" v-if="thread.message != null">
 					<div>{{ thread.message }}</div>
 					<div class="image" v-if="thread.attachment">
-						<img :src="'http://localhost:3000/uploads/' + thread.attachment">
+						<img
+							:src="
+								'http://localhost:3000/uploads/' +
+								thread.attachment
+							"
+						/>
 					</div>
 				</div>
 				<div class="reply">
@@ -143,6 +161,16 @@ export default {
 				<div class="author">
 					<span :title="value.date">{{ value.format_date }}</span>
 					<span>de {{ value.username }}</span>
+				</div>
+				<div
+					class="delete"
+					v-if="
+						value.creator === $getInfo().userId ||
+						$getInfo().status === 1
+					"
+					v-on:click="deleteReply(value.id)"
+				>
+					Supprimé
 				</div>
 			</div>
 		</div>

@@ -235,16 +235,29 @@ body {
         }
 
         .reply-post {
-            margin-top: 30px;
-            margin-bottom: 20px;
+            position: relative;
+            margin-top: 50px;
+            margin-bottom: 40px;
             background: rgba(177, 177, 177, 0.377);
             padding: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             .author {
                 font-style: italic;
                 margin-top: 10px;
                 display: flex;
                 justify-content: space-between;
+            }
+
+            .delete {
+                cursor: pointer;
+                position: absolute;
+                bottom: -29px;
+                right: 0;
+                background: rgb(251, 40, 40);
+                width: fit-content;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
             }
         }
     }
