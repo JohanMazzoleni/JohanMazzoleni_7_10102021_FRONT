@@ -116,7 +116,7 @@ export default {
 					</div>
 				</div>
 				<div class="message" v-if="thread.message != null">
-					<div>{{ thread.message }}</div>
+					<div class="message-format">{{ thread.message }}</div>
 					<div class="image" v-if="thread.attachment">
 						<img
 							:src="

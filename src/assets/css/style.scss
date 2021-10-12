@@ -22,12 +22,11 @@ body {
         }
 
         .navigation {
-            width: 80%!important;
+            width: 80% !important;
             flex-direction: column;
             ul {
-                border-radius: 0!important;
-                margin-left: 0px!important;
-                
+                border-radius: 0 !important;
+                margin-left: 0px !important;
             }
         }
     }
@@ -184,7 +183,7 @@ body {
     display: flex;
     justify-content: center;
     .thread-container {
-        width: 50%;
+        width: 80%;
 
         @include mobile {
             width: 80%;
@@ -195,7 +194,7 @@ body {
         }
 
         @include desktop {
-            width: 50%;
+            width: 80%;
         }
 
         .thread-post {
@@ -207,14 +206,32 @@ body {
                 align-items: center;
                 padding: 10px;
                 border-bottom: 1px solid black;
+
+                @include mobile {
+                    flex-direction: column;
+                }
+
                 .title {
                     padding: 10px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 50%;
+                    overflow: hidden;
+
+                    @include mobile {
+                        width: 100%;
+                        text-align: center;
+                    }
                 }
             }
 
             .message {
                 padding: 10px;
                 border-bottom: 1px solid black;
+
+                .message-format {
+                    line-break: anywhere;
+                }
 
                 .image {
                     display: flex;
@@ -250,6 +267,11 @@ body {
             background: rgba(177, 177, 177, 0.377);
             padding: 10px;
             // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+            .message {
+                line-break: anywhere;
+            }
+
             .author {
                 font-style: italic;
                 margin-top: 10px;
