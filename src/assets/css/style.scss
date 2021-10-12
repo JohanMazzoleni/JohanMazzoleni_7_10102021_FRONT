@@ -147,6 +147,10 @@ body {
                 flex-direction: column;
             }
 
+            @include desktop {
+                flex-direction: row;
+            }
+
             .title {
                 padding: 10px;
                 text-overflow: ellipsis;
@@ -163,6 +167,11 @@ body {
                 @include tablet {
                     text-align: center;
                     width: 100%;
+                }
+
+                @include desktop {
+                    width: 50%;
+                    text-align: left;
                 }
             }
 
