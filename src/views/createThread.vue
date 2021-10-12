@@ -10,6 +10,13 @@ export default {
 			title: null,
 			message: null,
 			image: null,
+			mime: [
+				"image/png",
+				"image/gif",
+				"image/jpeg",
+				"image/png",
+				"image/webp",
+			],
 		};
 	},
 	methods: {
@@ -28,25 +35,26 @@ export default {
 			formData.append("title", ctx.title);
 			formData.append("message", ctx.message);
 
-			ctx.axios.post(ctx.$endPoint + "/thread/create", formData, {
-				headers: {
-					authorization: "Bearer: " + localStorage.getItem("token"),
-				},
-			}).then(function(res)
-            {
-                ctx.$router.push({
-                    name: "Thread",
-                    params: {
-                        id: res.data.thread,
-                    }
-                })
-            });
+			ctx.axios
+				.post(ctx.$endPoint + "/thread/create", formData, {
+					headers: {
+						authorization:
+							"Bearer: " + localStorage.getItem("token"),
+					},
+				})
+				.then(function (res) {
+					ctx.$router.push({
+						name: "Thread",
+						params: {
+							id: res.data.thread,
+						},
+					});
+				});
 		},
 	},
-    mounted()
-    {
-        document.title = "Groupomania | Crée un thread";
-    }
+	mounted() {
+		document.title = "Groupomania | Crée un thread";
+	},
 };
 </script>
 
@@ -57,7 +65,14 @@ export default {
 			<form @submit="createThread">
 				<div class="col-2">
 					<label for="title">Titre</label>
-					<input type="text" id="title" maxlength="50" v-model="title" required />
+					<input
+						type="text"
+						id="title"
+						maxlength="50"
+						v-model="title"
+						accept=""
+						required
+					/>
 				</div>
 				<div class="col-2">
 					<label for="message">Message</label>
@@ -66,14 +81,14 @@ export default {
 						id="message"
 						cols="30"
 						rows="5"
-                        maxlength="400"
+						maxlength="400"
 						v-model="message"
-                        required
+						required
 					></textarea>
 				</div>
 				<div class="col-2">
 					<label for="message">Image</label>
-					<input type="file" id="image" />
+					<input type="file" id="image" :accept="mime.join(',')" />
 				</div>
 				<div class="col-2">
 					<button type="submit">Créer le thread</button>
