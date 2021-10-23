@@ -1,7 +1,7 @@
 <script>
 export default {
 	mounted() {
-		document.title = "Groupomania | S'inscrire";
+		document.title = "Groupomania | Connexion";
 	},
 	data()
 	{
