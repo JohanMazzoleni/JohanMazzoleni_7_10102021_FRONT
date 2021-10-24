@@ -3,38 +3,42 @@ export default {
 	mounted() {
 		document.title = "Groupomania | Connexion";
 	},
-	data()
-	{
+	data() {
 		return {
 			email: "test@example.com",
-			password: "12345",
-		}
+			password: "12345AAAZZZz",
+		};
 	},
-    methods: {
-        login(e)
-        {
+	methods: {
+		login(e) {
 			var ctx = this;
-            e.preventDefault();
-            ctx.axios.post(ctx.$endPoint + "/auth/login", {
-				email: ctx.email,
-				password: ctx.password,
-			}).then(function(res)
-			{
-				if (res.data.status === true)
-				{
-					localStorage.setItem("token", res.data.token);
-					alert("Félicitations, vous êtes bien connecté à votre compte.");
-					ctx.$router.push({
-						name: "Home",
-					})
-				}
-			})
-			.catch(function()
-			{
-				alert("Les identifiants sont incorrects.");
-			});
-        },
-    }
+			e.preventDefault();
+			ctx.axios
+				.post(ctx.$endPoint + "/auth/login", {
+					email: ctx.email,
+					password: ctx.password,
+				})
+				.then(function (res) {
+					if (res.data.status === true) {
+						localStorage.setItem("token", res.data.token);
+						ctx.$toast.open({
+							message:
+								"Félicitations, vous êtes bien connecté à votre compte.",
+							type: "success",
+						});
+						ctx.$router.push({
+							name: "Home",
+						});
+					}
+				})
+				.catch(function () {
+					ctx.$toast.open({
+						message: "Les identifiants sont incorrects.",
+						type: "error",
+					});
+				});
+		},
+	},
 };
 </script>
 
@@ -45,15 +49,22 @@ export default {
 			<form @submit="login">
 				<div class="col-1">
 					<label for="email">Email: </label>
-					<input id="email" type="text" v-model="email" required>
+					<input id="email" type="text" v-model="email" required />
 				</div>
-                <div class="col-1">
+				<div class="col-1">
 					<label for="password">Mot de passe: </label>
-					<input id="password" type="password" v-model="password" required>
+					<input
+						id="password"
+						type="password"
+						v-model="password"
+						required
+					/>
 				</div>
 				<div class="col-2">
 					<button type="submit">Se connecter</button>
-					<router-link :to="{name:'Register'}">Déjà inscrit ?</router-link>
+					<router-link :to="{ name: 'Register' }"
+						>Déjà inscrit ?</router-link
+					>
 				</div>
 			</form>
 		</div>

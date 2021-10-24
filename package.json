@@ -15,7 +15,8 @@
     "password-validator": "^5.1.1",
     "vue": "^3.0.0",
     "vue-axios": "^3.3.7",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "vue-toast-notification": "2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

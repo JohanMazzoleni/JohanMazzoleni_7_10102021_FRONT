@@ -17,23 +17,27 @@ export default {
 				"Souhaitez-vous supprimer votre compte ? Écrivez votre email pour valider la suppression."
 			);
 			if (deleteAcc === ctx.info.email) {
-				
-				ctx.axios.delete(ctx.$endPoint + "/auth/delete", {
-					headers: {
-						authorization:
-							"Bearer: " + localStorage.getItem("token"),
-					},
-				}).then(function()
-                {
-                    alert("Votre compte a été supprimé.");
-                    ctx.$router.push({
-                        name: "Register"
-                    })
-                });
+				ctx.axios
+					.delete(ctx.$endPoint + "/auth/delete", {
+						headers: {
+							authorization:
+								"Bearer: " + localStorage.getItem("token"),
+						},
+					})
+					.then(function () {
+						ctx.$toast.open({
+							message: "Votre compte a été supprimé.",
+							type: "info",
+						});
+						ctx.$router.push({
+							name: "Register",
+						});
+					});
 			} else {
-				alert(
-					"Vous n'avez pas bien indiqué votre email, le compte n'a pas été supprimé"
-				);
+				ctx.$toast.open({
+					message: "Vous n'avez pas bien indiqué votre email, le compte n'a pas été supprimé",
+					type: "danger",
+				});
 			}
 		},
 	},

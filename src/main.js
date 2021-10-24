@@ -4,6 +4,8 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import jwt from 'jsonwebtoken';
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 import TimeAgo from "javascript-time-ago";
 import fr from "javascript-time-ago/locale/fr.json";
@@ -33,4 +35,5 @@ app.config.globalProperties.$endPoint = "http://localhost:3000";
 
 app.use(VueAxios, axios);
 app.use(router);
+app.use(VueToast);
 app.mount("#app");

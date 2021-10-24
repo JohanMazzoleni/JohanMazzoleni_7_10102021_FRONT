@@ -9,8 +9,8 @@ export default {
 		return {
 			email: "test@example.com",
 			username: "JohnDoe",
-			password: "12345",
-			repassword: "12345",
+			password: "12345AAAZZZz",
+			repassword: "12345AAAZZZz",
 			errorMessage: null,
 		};
 	},
@@ -20,7 +20,10 @@ export default {
 			e.preventDefault();
 
 			if (ctx.password !== ctx.repassword) {
-				alert("Les mots de passe ne sont pas identiques");
+				ctx.$toast.open({
+					message: "Les mots de passe ne sont pas identiques",
+					type: "error",
+				});
 				return;
 			}
 
@@ -74,7 +77,10 @@ export default {
 				.then(function (res) {
 					if (res.data.status === true) {
 						localStorage.setItem("token", res.data.token);
-						alert("Votre inscription a bien été effectuer.");
+						ctx.$toast.open({
+							message: "Votre inscription a bien été effectuer.",
+							type: "success",
+						});
 						ctx.$router.push({
 							name: "Home",
 						});
@@ -92,7 +98,10 @@ export default {
 								"Votre nom d'utilisateur est déjà utilisé.";
 						}
 					}
-					alert(errorMessage);
+					ctx.$toast.open({
+						message: errorMessage,
+						type: "error",
+					});
 				});
 		},
 	},
