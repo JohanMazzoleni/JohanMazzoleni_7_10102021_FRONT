@@ -69,11 +69,10 @@ export default {
 
 					ctx.thread.format_date = ctx.format_date(ctx.thread.date);
 				})
-				.catch(function()
-				{
+				.catch(function () {
 					ctx.$router.push({
-						name: "Home"
-					})
+						name: "Home",
+					});
 				});
 		},
 		format_date(date) {
@@ -145,6 +144,22 @@ export default {
 							required
 						></textarea>
 						<div class="end">
+							<button
+								v-on:click="
+									$router.push({
+										name: 'editThread',
+										params: {
+											id: id,
+										},
+									})
+								"
+								v-if="
+									thread.creator === $getInfo().userId ||
+									$getInfo().status === 1
+								"
+							>
+								Modifier le thread
+							</button>
 							<button>Envoyer le message</button>
 						</div>
 					</form>

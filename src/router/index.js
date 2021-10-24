@@ -34,6 +34,14 @@ const routes = [
 		}
 	},
 	{
+		path: '/thread/edit/:id',
+		name: 'editThread',
+		component: () => import('../views/editThread.vue'),
+		meta: {
+			auth: 1
+		}
+	},
+	{
 		path: '/thread/create',
 		name: 'createThread',
 		component: () => import('../views/createThread.vue'),
