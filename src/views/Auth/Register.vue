@@ -160,7 +160,7 @@ export default {
 				<div class="col-2">
 					<button type="submit">S'inscrire</button>
 					<router-link :to="{ name: 'Login' }"
-						>Déjà inscrit ?</router-link
+						>Se connecter</router-link
 					>
 				</div>
 			</form>
