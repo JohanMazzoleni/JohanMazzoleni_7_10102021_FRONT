@@ -19,6 +19,9 @@ const routes = [
 		path: "/settings",
 		name: "Settings",
 		component: () => import('../views/Settings.vue'),
+		meta: {
+			auth: 1
+		}
 	},
 	{
 		path: "/login",
@@ -57,9 +60,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	// var ctx = this;
 	if (to.meta.auth) {
-		const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
+		const token = localStorage.getItem("token");
 		if (!token) {
 			next({ name: "Login" });
 		}
@@ -70,7 +72,6 @@ router.beforeEach((to, from, next) => {
 	else {
 		next();
 	}
-	// console.log(to, from);
 })
 
 export default router
